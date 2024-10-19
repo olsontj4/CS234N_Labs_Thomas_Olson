@@ -8,14 +8,15 @@ using MMABooksDBClasses;
 
 namespace MMABooksTests
 {
+    [TestFixture]
     public class CustomerDBTests
     {
 
         [Test]
         public void TestGetCustomer()
         {
-            Customer c = CustomerDB.GetCustomer(1);
-            Assert.AreEqual(1, c.CustomerID);
+            Customer c = CustomerDB.GetCustomer(4);
+            Assert.AreEqual(4, c.CustomerID);
         }
 
         [Test]
