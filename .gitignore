@@ -397,3 +397,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /MMABooksADO2022/MMABooksDBClasses/mySqlSettings.json
+/MMABooksADO2022/MMABooksDBClasses/mySqlSettings.json
