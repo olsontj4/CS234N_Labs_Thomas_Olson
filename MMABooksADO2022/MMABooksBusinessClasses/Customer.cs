@@ -130,13 +130,13 @@ namespace MMABooksBusinessClasses
             }
             set
             {
-                if (value.Trim().ToUpper().Length == 2)
+                if (value.Trim().ToUpper().Length != 2)
                 {
-                    state = value.Trim().ToUpper();
+                    throw new ArgumentOutOfRangeException("State must be 2 characters.");
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("State must be 2 characters.");
+                    state = value.Trim().ToUpper();
                 }
             }
         }
