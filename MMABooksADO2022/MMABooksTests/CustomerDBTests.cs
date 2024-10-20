@@ -11,12 +11,12 @@ namespace MMABooksTests
     [TestFixture]
     public class CustomerDBTests
     {
-        private Customer def;
+        private Customer def = new Customer();
         private Customer c;
         [SetUp]
         public void SetUp()
         {
-            def = new Customer();
+
         }
         [Test]
         public void TestGetCustomer()
@@ -34,8 +34,23 @@ namespace MMABooksTests
             c.State = "FL";
             c.ZipCode = "10101";
             int customerID = CustomerDB.AddCustomer(c);
+            c.CustomerID = customerID;
             c = CustomerDB.GetCustomer(customerID);
             Assert.AreEqual("Mickey Mouse", c.Name);
+        }
+        [Test]
+        public void TestUpdateCustomer()
+        {
+            def = CustomerDB.GetCustomer(c.CustomerID);
+            def.CustomerID = c.CustomerID;
+            Assert.AreEqual((int)0, def.CustomerID);
+            /*Assert.AreEqual("Mickey Mouse", def.Name);
+            c.Name = "Minnie Mouse";
+            c.Address = "102 Main Street";
+            c.City = "Los Angeles";
+            c.State = "CA";
+            c.ZipCode = "91919";*/
+            //Assert.IsTrue(CustomerDB.UpdateCustomer(def, c));*/
         }
         [Test]
         public void TestDeleteCustomer()

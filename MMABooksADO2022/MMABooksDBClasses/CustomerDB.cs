@@ -159,11 +159,23 @@ namespace MMABooksDBClasses
                 "AND ZipCode = @OldZipCode";
             MySqlCommand updateCommand = new MySqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewName", newCustomer.Name);
+            updateCommand.Parameters.AddWithValue("@NewAddress", newCustomer.Address);
+            updateCommand.Parameters.AddWithValue("@NewCity", newCustomer.City);
+            updateCommand.Parameters.AddWithValue("@NewState", newCustomer.State);
+            updateCommand.Parameters.AddWithValue("@NewZipCode", newCustomer.ZipCode);
+            updateCommand.Parameters.AddWithValue("@OldCustomerID", oldCustomer.CustomerID);
+            updateCommand.Parameters.AddWithValue("@OldName", oldCustomer.Name);
+            updateCommand.Parameters.AddWithValue("@OldAddress", oldCustomer.Address);
+            updateCommand.Parameters.AddWithValue("@OldCity", oldCustomer.City);
+            updateCommand.Parameters.AddWithValue("@OldState", oldCustomer.State);
+            updateCommand.Parameters.AddWithValue("@OldZipCode", oldCustomer.ZipCode);
             try
             {
-                // open the connection
-                // execute the command
-                // if the number of records returned = 1, return true otherwise return false
+                connection.Open();
+                if (updateCommand.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
             }
             catch (MySqlException ex)
             {
@@ -173,7 +185,6 @@ namespace MMABooksDBClasses
             {
                 connection.Close();
             }
-
             return false;
         }
     }
