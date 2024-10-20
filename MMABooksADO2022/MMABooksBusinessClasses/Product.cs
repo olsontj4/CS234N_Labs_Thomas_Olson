@@ -68,7 +68,7 @@ namespace MMABooksBusinessClasses
             }
             set
             {
-                onHandQuantity = value;
+                onHandQuantity = value;  //Not sure if this would need any validation.
             }
         }
         public decimal UnitPrice
