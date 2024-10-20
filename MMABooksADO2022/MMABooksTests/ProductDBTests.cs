@@ -9,23 +9,27 @@ namespace MMABooksTests
 {
     public class ProductDBTests
     {
-
-        /*[Test]
+        private Product def;
+        private Product p;
+        [SetUp]
+        public void SetUp()
+        {
+            def = new Product();
+            p = new Product("N1C3", "Haha.", 69, 4.20m);
+        }
+        [Test]
         public void TestGetProduct()
         {
-            Product p = ProductDB.GetProduct(1);
-            Assert.AreEqual(1, p.ProductID);
+            Product def = ProductDB.GetProduct("A4CS");
+            Assert.AreEqual("A4CS", def.ProductCode);
         }
 
         [Test]
         public void TestCreateProduct()
         {
-            Product p = new Product();
-            p.Name = "";
-
-            int productID = ProductDB.AddProduct(p);
-            p = ProductDB.GetProduct(productID);
-            Assert.AreEqual("", p.Name);
-        }*/
+            string productCode = ProductDB.AddProduct(p);
+            p = ProductDB.GetProduct(productCode);
+            Assert.AreEqual("Haha.", p.Description);
+        }
     }
 }

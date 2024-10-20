@@ -11,27 +11,37 @@ namespace MMABooksTests
     [TestFixture]
     public class CustomerDBTests
     {
-
+        private Customer def;
+        private Customer c;
+        [SetUp]
+        public void SetUp()
+        {
+            def = new Customer();
+        }
         [Test]
         public void TestGetCustomer()
         {
-            Customer c = CustomerDB.GetCustomer(4);
-            Assert.AreEqual(4, c.CustomerID);
+            Customer def = CustomerDB.GetCustomer(4);
+            Assert.AreEqual(4, def.CustomerID);
         }
-
         [Test]
         public void TestCreateCustomer()
         {
-            Customer c = new Customer();
+            c = new Customer();
             c.Name = "Mickey Mouse";
             c.Address = "101 Main Street";
             c.City = "Orlando";
             c.State = "FL";
             c.ZipCode = "10101";
-
             int customerID = CustomerDB.AddCustomer(c);
             c = CustomerDB.GetCustomer(customerID);
             Assert.AreEqual("Mickey Mouse", c.Name);
+        }
+        [Test]
+        public void TestDeleteCustomer()
+        {
+            //Assert.IsTrue(CustomerDB.DeleteCustomer(CustomerDB.GetCustomer(710)));  Keeping this here so I can delete the dozens of Mickey Mice in my database.
+            Assert.IsTrue(CustomerDB.DeleteCustomer(c));
         }
     }
 }
