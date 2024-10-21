@@ -68,7 +68,7 @@ namespace MMABooksBusinessClasses
             }
             set
             {
-                onHandQuantity = value;
+                onHandQuantity = value;  //Not sure if this would need any validation.
             }
         }
         public decimal UnitPrice
@@ -88,6 +88,10 @@ namespace MMABooksBusinessClasses
                     throw new ArgumentOutOfRangeException("Price must be greater than 0.");
                 }
             }
+        }
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }
