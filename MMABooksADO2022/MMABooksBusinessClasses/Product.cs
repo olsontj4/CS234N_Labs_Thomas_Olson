@@ -89,5 +89,9 @@ namespace MMABooksBusinessClasses
                 }
             }
         }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

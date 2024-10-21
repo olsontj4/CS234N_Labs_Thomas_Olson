@@ -42,6 +42,7 @@ namespace MMABooksDBClasses
                 }
                 else
                 {
+                    custReader.Close();
                     return null;
                 }
             }
